@@ -8,68 +8,361 @@
 </head>
 <body>
     <nav>
-      <div class="logo">
-    <img src="C:\Users\super\Downloads\WhatsApp Image 2025-09-18 at 11.05.47 PM.jpeg" alt="DATA VEDHI Club Logo" class="club-logo">
-    <span class="club-name">DATA VEDHI</span>
-</div>
-        <button id="theme-toggle">Toggle Mode</button>
+        <div class="logo">
+            
+            <span class="club-name">PORTFOLIO</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-item active">Home</a>
+            <a href="#about" class="nav-item">About</a>
+            <a href="#skills" class="nav-item">Skills</a>
+            <a href="#projects" class="nav-item">Projects</a>
+            <a href="#contact" class="nav-item">Contact</a>
+            <button id="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span class="toggle-text">Dark Mode</span>
+            </button>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
 
     <main class="hero">
         <div class="hero-content">
-            <h1 class="fade-in-1">Gajula Siddhu Srinivas</h1>
-            <h2 class="fade-in-2">A Curious Mind for Data & Technology</h2>
-            <p class="fade-in-3">
-                Hello! I'm a passionate problem-solver from Surat, Gujarat, with a strong interest in technology and data science. I thrive on building projects that are both challenging and impactful. 
+            <h1 class="fade-in-1"><span class="name-highlight">Gajula Siddhu Srinivas</span></h1>
+            <h2 class="fade-in-2">Turning data into decisions, and ideas into impact</h2>
+            <p class="fade-in-3 hero-bio">
+               I’m a developer and AI enthusiast who builds thoughtful, production-ready web applications and applied machine learning solutions. I care deeply about clean code, meaningful user experiences, and measurable impact — taking ideas from concept to real-world deployment.
             </p>
         </div>
     </main>
-     <section class="about-section">
+    <section id="about" class="about-section">
     <div class="about-content fade-in-4">
         <h2>About Me</h2>
         <p class="fade-in-5">
-           Greetings! I'm a student who loves to solve puzzles with code and data. I'm eager to learn alongside the technical and hope to bring my enthusiasm for new projects.
+           I’m Siddhu Srinivas, a passionate student and aspiring developer who loves transforming complex puzzles into elegant solutions through code, data, and creativity. My curiosity drives me to explore how technology can make real-world impact — whether it’s optimizing systems, uncovering insights from data, or designing meaningful user experiences.<br><br>Currently pursuing my B.Tech in Computer Science (CSM), I focus on bridging the gap between theory and application. I enjoy translating abstract concepts like algorithms, data structures, and machine learning principles into practical, efficient, and scalable solutions. With a consistent academic record, reflected in my 8.7 GPA, I take pride in continuous learning and disciplined execution.<br>
         </p>
         <p class="fade-in-6">
-            Currently pursuing my B.Tech, I am focused on translating complex theoretical concepts into practical, efficient solutions. My consistent academic performance, highlighted by a recent 8.7 GPA, reflects my commitment to excellence. I thrive in challenging environments and am eager to apply my growing technical expertise to contribute to innovative projects.
+            Beyond academics, I’m deeply interested in AI, web development, and human-centered design. I enjoy collaborating on projects that challenge conventional thinking and push technological boundaries. For me, innovation isn’t just about writing code — it’s about solving problems that matter and crafting experiences that users truly value.<br><br>In every project I take on, I bring curiosity, consistency, and creativity — striving to grow not just as a developer, but as a lifelong learner dedicated to building a smarter, more connected future.<br>
         </p>
-        
         <h3 class="fade-in-7">Key Academic Milestones</h3>
         <ul class="milestones fade-in-7">
-            <li>B.Tech (CSM), 1st Semester: <strong>8.7 GPA</strong></li>
-            <li>Intermediate (Hyderabad): <strong>942</strong></li>
+            <li>B.Tech (CSM), 1st year: <strong>8.64 CGPA</strong></li>
+            <li>Intermediate (Hyderabad): <strong>94.2%</strong></li>
             <li>10th Grade (Surat): <strong>75.8%</strong></li>
         </ul>
+
+        <div id="skills" class="skills-section fade-in-8">
+            <h3>Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-card" data-skill="web">
+                    <div class="skill-icon">💻</div>
+                    <h4>Web Development</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Node.js & Express</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" data-skill="python">
+                    <div class="skill-icon">🐍</div>
+                    <h4>Python Development</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>Data Structures</li>
+                        <li>OOP & GUI Apps</li>
+                        <li>Libraries & Frameworks</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" data-skill="ui">
+                    <div class="skill-icon">🎨</div>
+                    <h4>UI/UX Design</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 80%;"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>User Interface Design</li>
+                        <li>Responsive Layouts</li>
+                        <li>User Experience</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" data-skill="excel">
+                    <div class="skill-icon">📊</div>
+                    <h4>Advanced Excel</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 75%;"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>Data Analysis</li>
+                        <li>VBA & Macros</li>
+                        <li>Pivot Tables & Charts</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" data-skill="ml">
+                    <div class="skill-icon">🤖</div>
+                    <h4>Machine Learning</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 70%;"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>Scikit-learn</li>
+                        <li>TensorFlow</li>
+                        <li>Data Preprocessing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <section class="projects-section">
-    <h2 class="fade-in-8">My Projects</h2>
+</section>
+    <section id="projects" class="projects-section">
+    <h2 class="fade-in-8">Featured Projects</h2>
+    
     <div class="projects-grid">
-
-        <div class="project-card fade-in-9">
-            <div class="project-header">
-                <span class="project-icon">🐾</span>
-                <h3>Pet Adopt</h3>
-            </div>
-            <p>A static webpage for a pet adoption service, built with HTML/CSS and the Bootstrap framework for a clean, responsive layout. It showcases pets in a card-based design, encouraging users to find a new companion.</p>
-            <div class="project-links">
-                <a href="https://github.com/Siddhu-Srinivas/My-Project-.git" target="_blank">View Code on GitHub</a>
-            </div>
-        </div>
-
-        <div class="project-card fade-in-10">
-            <div class="project-header">
-                <span class="project-icon">🎙️</span>
-                <h3>Echoverse</h3>
-            </div>
-            <p>An AI-powered text-to-speech app using IBM Granite LLM & Suno Bark TTS to rewrite text into different tones. Features multiple voice presets, instant playback, and download options for storytellers and podcasters.</p>
-            <div class="project-links">
-                <a href="https://github.com/Siddhu-Srinivas/Echoverse.git" target="_blank">View Code on GitHub</a>
-            </div>
-        </div>
-
+            <!-- AI & Machine Learning -->
+            <div class="project-card fade-in-9 hover-lift">
+    <div class="project-header animate-gradient">
+        <span class="project-icon pulse">🎙️</span>
+        <h3>Echoverse</h3>
+        <span class="tech-stack">IBM Granite LLM • Suno Bark TTS • Python</span>
     </div>
-</section>
-</section>
-    <script src="script.js"></script>
+    <p>A cutting-edge text-to-speech platform with AI-powered voice synthesis:</p>
+    <ul class="project-features slide-in">
+        <li>Real-time voice preview with instant feedback</li>
+        <li>Advanced tone and emotion controls</li>
+        <li>High-quality MP3/WAV exports</li>
+        <li>Multiple voice models and customization</li>
+    </ul>
+    <div class="project-meta">
+        <div class="project-chips">
+            <span class="project-chip">AI Voice Models</span>
+            <span class="project-chip">Real-time Preview</span>
+            <span class="project-chip">Custom Emotions</span>
+        </div>
+        <div class="project-links">
+            <a href="https://github.com/Siddhu-Srinivas/Echoverse.git" target="_blank" class="github-link shimmer">View Code</a>
+        </div>
+    </div>
+</div>
+
+
+            <!-- Data Analytics -->
+            <div class="project-card fade-in-10 hover-lift">
+                <div class="project-header animate-gradient">
+                    <span class="project-icon pulse">🌤️</span>
+                    <h3> WeatherScope Pro</h3>
+                    <span class="tech-stack">Python • ttkbootstrap • OpenWeatherMap API • matplotlib</span>
+                </div>
+                <p>A data-driven weather dashboard with real-time analytics and visualizations:</p>
+                <ul class="project-features slide-in">
+                    <li>Dynamic data visualization with matplotlib</li>
+                    <li>Real-time API integration and processing</li>
+                    <li>Responsive UI with custom styling</li>
+                </ul>
+                <div class="project-meta">
+                    <div class="project-chips">
+                        <span class="project-chip">Data Analysis</span>
+                        <span class="project-chip">API Integration</span>
+                        <span class="project-chip">Custom UI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-4.git" target="_blank" class="github-link shimmer">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="project-card fade-in-11 hover-lift">
+                <div class="project-header animate-gradient">
+                    <span class="project-icon pulse">📝</span>
+                    <h3> Feedback Collector</h3>
+                    <span class="tech-stack">Node.js • Express • HTML/CSS • JSON</span>
+                </div>
+                <p>A modern feedback management system with seamless user experience:</p>
+                <ul class="project-features slide-in">
+                    <li>Responsive form design with validation</li>
+                    <li>Server-side data processing and storage</li>
+                    <li>Scalable JSON-based architecture</li>
+                </ul>
+                <div class="project-meta">
+                    <div class="project-chips">
+                        <span class="project-chip">Full Stack</span>
+                        <span class="project-chip">Node.js</span>
+                        <span class="project-chip">REST API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Siddhu-Srinivas/feedback-collector.git" target="_blank" class="github-link shimmer">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="project-card fade-in-12 hover-lift">
+                <div class="project-header animate-gradient">
+                    <span class="project-icon pulse">🔒</span>
+                    <h3> SecureGen</h3>
+                    <span class="tech-stack">Python • Tkinter • Cryptography</span>
+                </div>
+                <p>A robust password management solution with advanced security:</p>
+                <ul class="project-features slide-in">
+                    <li>Cryptographic password generation</li>
+                    <li>Real-time strength analysis</li>
+                    <li>Secure storage and monitoring</li>
+                </ul>
+                <div class="project-meta">
+                    <div class="project-chips">
+                        <span class="project-chip">Cryptography</span>
+                        <span class="project-chip">Security</span>
+                        <span class="project-chip">Desktop App</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-3.git" target="_blank" class="github-link shimmer">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Healthcare -->
+            <div class="project-card fade-in-13 hover-lift">
+                <div class="project-header animate-gradient">
+                    <span class="project-icon pulse">🩺</span>
+                    <h3> Advanced BMI</h3>
+                    <span class="tech-stack">Python • tkinter • Data Analytics</span>
+                </div>
+                <p>A health monitoring system with personalized insights:</p>
+                <ul class="project-features slide-in">
+                    <li>Multi-page analytics dashboard</li>
+                    <li>Smart meal planning algorithm</li>
+                    <li>Health metrics visualization</li>
+                </ul>
+                <div class="project-meta">
+                    <div class="project-chips">
+                        <span class="project-chip">Healthcare</span>
+                        <span class="project-chip">Analytics</span>
+                        <span class="project-chip">AI Assistant</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-2.git" target="_blank" class="github-link shimmer">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UI/UX Design -->
+            <div class="project-card fade-in-14 hover-lift">
+                <div class="project-header animate-gradient">
+                    <span class="project-icon pulse">🐾</span>
+                    <h3> Pet Adopt</h3>
+                    <span class="tech-stack">HTML • CSS • Bootstrap</span>
+                </div>
+                <p>A modern pet adoption platform with intuitive design:</p>
+                <ul class="project-features slide-in">
+                    <li>Responsive card-based interface</li>
+                    <li>Mobile-first approach</li>
+                    <li>Optimized user journey</li>
+                </ul>
+                <div class="project-meta">
+                    <div class="project-chips">
+                        <span class="project-chip">UI/UX</span>
+                        <span class="project-chip">Bootstrap</span>
+                        <span class="project-chip">Responsive</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Siddhu-Srinivas/My-Project-.git" target="_blank" class="github-link shimmer">View Code</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <footer id="contact" class="social-section">
+        <div class="social-container fade-in-15">
+            <h2>Let's Connect</h2>
+            <p class="social-text">Feel free to reach out for collaborations or just a friendly hello</p>
+            <div class="social-icons">
+                <a href="https://github.com/Siddhu-Srinivas" class="social-icon github hover-lift" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/gajula-siddhu-srinivas-611439322/" class="social-icon linkedin hover-lift" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="mailto:gajulasiddhu06@gmail.com" class="social-icon email hover-lift">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://www.instagram.com/itz_me_siddhu_6351?igsh=MXY0cGJlNTJtOTZmYQ==" class="social-icon instagram hover-lift" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+              
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Gajula Siddhu Srinivas. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const toggleIcon = themeToggle.querySelector('i');
+        const toggleText = themeToggle.querySelector('.toggle-text');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                toggleIcon.className = 'fas fa-sun';
+                toggleText.textContent = 'Light Mode';
+            } else {
+                toggleIcon.className = 'fas fa-moon';
+                toggleText.textContent = 'Dark Mode';
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Active nav item
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                navLinks.classList.remove('active'); // Close mobile menu when item is clicked
+            });
+        });
+
+        // Hide mobile menu on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.querySelector('nav');
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.style.transform = 'translateY(-100%)';
+                navLinks.classList.remove('active');
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
 </body>
 </html>
