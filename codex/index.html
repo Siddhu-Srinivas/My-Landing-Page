@@ -3,366 +3,817 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gajula Siddhu Srinivas | Data Vedhi</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Gajula Siddhu Srinivas | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #030305;
+            --surface: #0a0a0f;
+            --primary: #00f3ff;
+            --secondary: #7000ff;
+            --accent: #ff00c8;
+            --text: #e0e0f0;
+            --text-dim: #808090;
+            --neon-glow: 0 0 15px rgba(0, 243, 255, 0.4);
+            --transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .light-mode {
+            --bg: #f0f2f5;
+            --surface: #ffffff;
+            --primary: #0066ff;
+            --secondary: #6200ea;
+            --accent: #d500f9;
+            --text: #1a1a2e;
+            --text-dim: #505060;
+            --neon-glow: 0 5px 15px rgba(0, 102, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: crosshair;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Neural Background --- */
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 9999;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 243, 255, 0.02) 50%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: fixed;
+            bottom: 100%;
+            pointer-events: none;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(3, 3, 5, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -1px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover {
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+        }
+
+        #theme-toggle {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .system-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            background: rgba(0, 243, 255, 0.05);
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero h2 {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--primary);
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .hero-intro {
+            max-width: 700px;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .typing-container {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            min-height: 1.6em;
+        }
+
+        /* --- Global Section Styling --- */
+        section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        /* --- About Grid --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .bio-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .terminal-window {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        .terminal-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* --- Skills Grid --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-list {
+            list-style: none;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            color: var(--primary);
+        }
+
+        /* --- Projects Grid --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(112, 0, 255, 0.1);
+        }
+
+        .project-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .project-tech {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .project-desc {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .project-features li {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .tech-badge {
+            padding: 4px 10px;
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--primary);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .view-code {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            margin-top: 1.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .view-code:hover {
+            gap: 15px;
+            text-shadow: var(--neon-glow);
+        }
+
+        /* --- Contact --- */
+        .nexus-footer {
+            padding: 100px 5%;
+            background: #000;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+            text-align: center;
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-node {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dim);
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            transition: var(--transition);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .social-node:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--neon-glow);
+        }
+
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
+
+    <canvas id="neural-canvas"></canvas>
+    <div class="scanline"></div>
+
     <nav>
-        <div class="logo">
-            
-            <span class="club-name">PORTFOLIO</span>
-        </div>
+        <a href="#" class="brand">SIDDHU.DEV</a>
         <div class="nav-links">
-            <a href="#" class="nav-item active">Home</a>
             <a href="#about" class="nav-item">About</a>
             <a href="#skills" class="nav-item">Skills</a>
             <a href="#projects" class="nav-item">Projects</a>
-            <a href="#contact" class="nav-item">Contact</a>
-            <button id="theme-toggle">
-                <i class="fas fa-moon"></i>
-                <span class="toggle-text">Dark Mode</span>
-            </button>
-        </div>
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
+            <a href="#contact" class="nav-item">Connect</a>
+            <button id="theme-toggle">MODE: DARK</button>
         </div>
     </nav>
 
     <main class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in-1"><span class="name-highlight">Gajula Siddhu Srinivas</span></h1>
-            <h2 class="fade-in-2">Turning data into decisions, and ideas into impact</h2>
-            <p class="fade-in-3 hero-bio">
-               I’m a developer and AI enthusiast who builds thoughtful, production-ready web applications and applied machine learning solutions. I care deeply about clean code, meaningful user experiences, and measurable impact — taking ideas from concept to real-world deployment.
-            </p>
+        <div class="system-status">INITIATING DATA_CORE // STATUS: ACTIVE</div>
+        <h1 class="reveal active">Gajula Siddhu Srinivas</h1>
+        <h2 class="reveal active">Turning data into decisions, and ideas into impact</h2>
+        <p class="hero-intro reveal active">
+            I’m a developer and AI enthusiast who builds thoughtful, production-ready web applications and applied machine learning solutions. I care deeply about clean code, meaningful user experiences, and measurable impact.
+        </p>
+        <div class="typing-container">
+            <span id="typed-text"></span><span class="cursor">|</span>
         </div>
     </main>
-    <section id="about" class="about-section">
-    <div class="about-content fade-in-4">
-        <h2>About Me</h2>
-        <p class="fade-in-5">
-           I’m Siddhu Srinivas, a passionate student and aspiring developer who loves transforming complex puzzles into elegant solutions through code, data, and creativity. My curiosity drives me to explore how technology can make real-world impact — whether it’s optimizing systems, uncovering insights from data, or designing meaningful user experiences.<br><br>Currently pursuing my B.Tech in Computer Science (CSM), I focus on bridging the gap between theory and application. I enjoy translating abstract concepts like algorithms, data structures, and machine learning principles into practical, efficient, and scalable solutions. With a consistent academic record, reflected in my 8.7 GPA, I take pride in continuous learning and disciplined execution.<br>
-        </p>
-        <p class="fade-in-6">
-            Beyond academics, I’m deeply interested in AI, web development, and human-centered design. I enjoy collaborating on projects that challenge conventional thinking and push technological boundaries. For me, innovation isn’t just about writing code — it’s about solving problems that matter and crafting experiences that users truly value.<br><br>In every project I take on, I bring curiosity, consistency, and creativity — striving to grow not just as a developer, but as a lifelong learner dedicated to building a smarter, more connected future.<br>
-        </p>
-        <h3 class="fade-in-7">Key Academic Milestones</h3>
-        <ul class="milestones fade-in-7">
-            <li>B.Tech (CSM), 1st year: <strong>8.64 CGPA</strong></li>
-            <li>Intermediate (Hyderabad): <strong>94.2%</strong></li>
-            <li>10th Grade (Surat): <strong>75.8%</strong></li>
-        </ul>
 
-        <div id="skills" class="skills-section fade-in-8">
-            <h3>Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-card" data-skill="web">
-                    <div class="skill-icon">💻</div>
-                    <h4>Web Development</h4>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 85%;"></div>
-                    </div>
-                    <ul class="skill-details">
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript</li>
-                        <li>Node.js & Express</li>
-                    </ul>
+    <section id="about">
+        <div class="section-header reveal">
+            <span class="section-tag">/01_BIOS_DATA</span>
+            <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-grid">
+            <div class="bio-content reveal">
+                <p>I’m Siddhu Srinivas, a passionate student and aspiring developer who loves transforming complex puzzles into elegant solutions through code, data, and creativity. My curiosity drives me to explore how technology can make real-world impact — whether it’s optimizing systems or designing meaningful user experiences.</p>
+                
+                <p>Currently pursuing my B.Tech in Computer Science (CSM), I focus on bridging the gap between theory and application. I enjoy translating abstract concepts like algorithms and machine learning principles into practical, efficient, and scalable solutions.</p>
+
+                <p>Beyond academics, I’m deeply interested in AI, web development, and human-centered design. I enjoy collaborating on projects that challenge conventional thinking and push technological boundaries.</p>
+
+                <div class="quote-block">
+                    "In every project I take on, I bring curiosity, consistency, and creativity — striving to grow as a lifelong learner dedicated to building a smarter, more connected future."
                 </div>
+            </div>
 
-                <div class="skill-card" data-skill="python">
-                    <div class="skill-icon">🐍</div>
-                    <h4>Python Development</h4>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 90%;"></div>
-                    </div>
-                    <ul class="skill-details">
-                        <li>Data Structures</li>
-                        <li>OOP & GUI Apps</li>
-                        <li>Libraries & Frameworks</li>
-                    </ul>
+            <div class="terminal-window reveal">
+                <div class="terminal-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
                 </div>
-
-                <div class="skill-card" data-skill="ui">
-                    <div class="skill-icon">🎨</div>
-                    <h4>UI/UX Design</h4>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 80%;"></div>
+                <div class="terminal-body">
+                    <div style="color: var(--primary); margin-bottom: 10px;">> sid.milestones_fetch();</div>
+                    <div style="padding-left: 10px;">
+                        - <strong>B.Tech (CSM),II yr/II Sem:</strong> 8.45 SGPA<br>
+                        - <strong>Intermediate (Hyd):</strong> 94.2%<br>
+                        - <strong>10th Grade (Surat):</strong> 75.8%<br>
+                        - <strong>sid.current_gpa:</strong> 8.58 CGPA (Overall);<br>
+                        - <strong>sid.status:</strong> "Learning_Always";
                     </div>
-                    <ul class="skill-details">
-                        <li>User Interface Design</li>
-                        <li>Responsive Layouts</li>
-                        <li>User Experience</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card" data-skill="excel">
-                    <div class="skill-icon">📊</div>
-                    <h4>Advanced Excel</h4>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 75%;"></div>
-                    </div>
-                    <ul class="skill-details">
-                        <li>Data Analysis</li>
-                        <li>VBA & Macros</li>
-                        <li>Pivot Tables & Charts</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card" data-skill="ml">
-                    <div class="skill-icon">🤖</div>
-                    <h4>Machine Learning</h4>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 70%;"></div>
-                    </div>
-                    <ul class="skill-details">
-                        <li>Scikit-learn</li>
-                        <li>TensorFlow</li>
-                        <li>Data Preprocessing</li>
-                    </ul>
+                    <div style="color: var(--secondary); margin-top: 20px;">> _</div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-    <section id="projects" class="projects-section">
-    <h2 class="fade-in-8">Featured Projects</h2>
-    
-    <div class="projects-grid">
-            <!-- AI & Machine Learning -->
-            <div class="project-card fade-in-9 hover-lift">
-    <div class="project-header animate-gradient">
-        <span class="project-icon pulse">🎙️</span>
-        <h3>Echoverse</h3>
-        <span class="tech-stack">IBM Granite LLM • Suno Bark TTS • Python</span>
-    </div>
-    <p>A cutting-edge text-to-speech platform with AI-powered voice synthesis:</p>
-    <ul class="project-features slide-in">
-        <li>Real-time voice preview with instant feedback</li>
-        <li>Advanced tone and emotion controls</li>
-        <li>High-quality MP3/WAV exports</li>
-        <li>Multiple voice models and customization</li>
-    </ul>
-    <div class="project-meta">
-        <div class="project-chips">
-            <span class="project-chip">AI Voice Models</span>
-            <span class="project-chip">Real-time Preview</span>
-            <span class="project-chip">Custom Emotions</span>
-        </div>
-        <div class="project-links">
-            <a href="https://github.com/Siddhu-Srinivas/Echoverse.git" target="_blank" class="github-link shimmer">View Code</a>
-        </div>
-    </div>
-</div>
-
-
-            <!-- Data Analytics -->
-            <div class="project-card fade-in-10 hover-lift">
-                <div class="project-header animate-gradient">
-                    <span class="project-icon pulse">🌤️</span>
-                    <h3> WeatherScope Pro</h3>
-                    <span class="tech-stack">Python • ttkbootstrap • OpenWeatherMap API • matplotlib</span>
-                </div>
-                <p>A data-driven weather dashboard with real-time analytics and visualizations:</p>
-                <ul class="project-features slide-in">
-                    <li>Dynamic data visualization with matplotlib</li>
-                    <li>Real-time API integration and processing</li>
-                    <li>Responsive UI with custom styling</li>
-                </ul>
-                <div class="project-meta">
-                    <div class="project-chips">
-                        <span class="project-chip">Data Analysis</span>
-                        <span class="project-chip">API Integration</span>
-                        <span class="project-chip">Custom UI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-4.git" target="_blank" class="github-link shimmer">View Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Web Development -->
-            <div class="project-card fade-in-11 hover-lift">
-                <div class="project-header animate-gradient">
-                    <span class="project-icon pulse">📝</span>
-                    <h3> Feedback Collector</h3>
-                    <span class="tech-stack">Node.js • Express • HTML/CSS • JSON</span>
-                </div>
-                <p>A modern feedback management system with seamless user experience:</p>
-                <ul class="project-features slide-in">
-                    <li>Responsive form design with validation</li>
-                    <li>Server-side data processing and storage</li>
-                    <li>Scalable JSON-based architecture</li>
-                </ul>
-                <div class="project-meta">
-                    <div class="project-chips">
-                        <span class="project-chip">Full Stack</span>
-                        <span class="project-chip">Node.js</span>
-                        <span class="project-chip">REST API</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Siddhu-Srinivas/feedback-collector.git" target="_blank" class="github-link shimmer">View Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Security -->
-            <div class="project-card fade-in-12 hover-lift">
-                <div class="project-header animate-gradient">
-                    <span class="project-icon pulse">🔒</span>
-                    <h3> SecureGen</h3>
-                    <span class="tech-stack">Python • Tkinter • Cryptography</span>
-                </div>
-                <p>A robust password management solution with advanced security:</p>
-                <ul class="project-features slide-in">
-                    <li>Cryptographic password generation</li>
-                    <li>Real-time strength analysis</li>
-                    <li>Secure storage and monitoring</li>
-                </ul>
-                <div class="project-meta">
-                    <div class="project-chips">
-                        <span class="project-chip">Cryptography</span>
-                        <span class="project-chip">Security</span>
-                        <span class="project-chip">Desktop App</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-3.git" target="_blank" class="github-link shimmer">View Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Healthcare -->
-            <div class="project-card fade-in-13 hover-lift">
-                <div class="project-header animate-gradient">
-                    <span class="project-icon pulse">🩺</span>
-                    <h3> Advanced BMI</h3>
-                    <span class="tech-stack">Python • tkinter • Data Analytics</span>
-                </div>
-                <p>A health monitoring system with personalized insights:</p>
-                <ul class="project-features slide-in">
-                    <li>Multi-page analytics dashboard</li>
-                    <li>Smart meal planning algorithm</li>
-                    <li>Health metrics visualization</li>
-                </ul>
-                <div class="project-meta">
-                    <div class="project-chips">
-                        <span class="project-chip">Healthcare</span>
-                        <span class="project-chip">Analytics</span>
-                        <span class="project-chip">AI Assistant</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-2.git" target="_blank" class="github-link shimmer">View Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- UI/UX Design -->
-            <div class="project-card fade-in-14 hover-lift">
-                <div class="project-header animate-gradient">
-                    <span class="project-icon pulse">🐾</span>
-                    <h3> Pet Adopt</h3>
-                    <span class="tech-stack">HTML • CSS • Bootstrap</span>
-                </div>
-                <p>A modern pet adoption platform with intuitive design:</p>
-                <ul class="project-features slide-in">
-                    <li>Responsive card-based interface</li>
-                    <li>Mobile-first approach</li>
-                    <li>Optimized user journey</li>
-                </ul>
-                <div class="project-meta">
-                    <div class="project-chips">
-                        <span class="project-chip">UI/UX</span>
-                        <span class="project-chip">Bootstrap</span>
-                        <span class="project-chip">Responsive</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Siddhu-Srinivas/My-Project-.git" target="_blank" class="github-link shimmer">View Code</a>
-                    </div>
-                </div>
-            </div>
-    </div>
     </section>
 
-    <!-- Social Media Section -->
-    <footer id="contact" class="social-section">
-        <div class="social-container fade-in-15">
-            <h2>Let's Connect</h2>
-            <p class="social-text">Feel free to reach out for collaborations or just a friendly hello</p>
-            <div class="social-icons">
-                <a href="https://github.com/Siddhu-Srinivas" class="social-icon github hover-lift" target="_blank">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/gajula-siddhu-srinivas-611439322/" class="social-icon linkedin hover-lift" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="mailto:gajulasiddhu06@gmail.com" class="social-icon email hover-lift">
-                    <i class="fas fa-envelope"></i>
-                    <span>Email</span>
-                </a>
-                <a href="https://www.instagram.com/itz_me_siddhu_6351?igsh=MXY0cGJlNTJtOTZmYQ==" class="social-icon instagram hover-lift" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-              
+    <section id="skills">
+        <div class="section-header reveal">
+            <span class="section-tag">/02_CORE_STACK</span>
+            <h2 class="section-title">Skills & Expertise</h2>
+        </div>
+        <div class="skills-grid reveal">
+            <div class="skill-card">
+                <span class="skill-icon">💻</span>
+                <h3>Web Development</h3>
+                <ul class="skill-list">
+                    <li>HTML5 & CSS3</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>Node.js & Express</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <span class="skill-icon">🐍</span>
+                <h3>Python Development</h3>
+                <ul class="skill-list">
+                    <li>Data Structures & Algos</li>
+                    <li>OOP & GUI (Tkinter)</li>
+                    <li>Automation Scripts</li>
+                    <li>Library Management</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <span class="skill-icon">🤖</span>
+                <h3>Machine Learning</h3>
+                <ul class="skill-list">
+                    <li>Scikit-learn</li>
+                    <li>TensorFlow / Keras</li>
+                    <li>Data Preprocessing</li>
+                    <li>Feature Engineering</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <span class="skill-icon">📊</span>
+                <h3>Advanced Excel</h3>
+                <ul class="skill-list">
+                    <li>VBA & Macros</li>
+                    <li>Pivot Tables</li>
+                    <li>Power Query</li>
+                    <li>Data Visualization</li>
+                </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Gajula Siddhu Srinivas. All rights reserved.</p>
+    </section>
+
+    <section id="projects">
+        <div class="section-header reveal">
+            <span class="section-tag">/03_SELECTED_WORKS</span>
+            <h2 class="section-title">Featured Projects</h2>
         </div>
+        
+        <div class="projects-grid reveal">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-emoji">🎙️</div>
+                <h3>Echoverse</h3>
+                <p class="project-tech">IBM Granite LLM • Suno Bark TTS • Python</p>
+                <p class="project-desc">A cutting-edge text-to-speech platform with AI-powered voice synthesis and emotional control.</p>
+                <ul class="project-features">
+                    <li>Real-time voice preview</li>
+                    <li>Advanced tone & emotion controls</li>
+                    <li>High-quality MP3/WAV exports</li>
+                </ul>
+                <div class="badge-grid">
+                    <span class="tech-badge">AI Voice</span>
+                    <span class="tech-badge">LLM Integration</span>
+                    <span class="tech-badge">UI/UX</span>
+                </div>
+                <a href="https://github.com/Siddhu-Srinivas/Echoverse" class="view-code">View Code <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-emoji">🌤️</div>
+                <h3>WeatherScope Pro</h3>
+                <p class="project-tech">OpenWeather API • Matplotlib • Tkinter</p>
+                <p class="project-desc">A data-driven weather dashboard with real-time analytics and dynamic visualizations.</p>
+                <ul class="project-features">
+                    <li>Matplotlib analytics integration</li>
+                    <li>Real-time API processing</li>
+                    <li>Responsive custom-styled UI</li>
+                </ul>
+                <div class="badge-grid">
+                    <span class="tech-badge">Data Viz</span>
+                    <span class="tech-badge">API</span>
+                    <span class="tech-badge">Analytics</span>
+                </div>
+                <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-4" class="view-code">View Code <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-emoji">📝</div>
+                <h3>Feedback Collector</h3>
+                <p class="project-tech">Node.js • Express • JSON</p>
+                <p class="project-desc">A modern feedback management system focused on scalability and seamless user experience.</p>
+                <ul class="project-features">
+                    <li>Server-side data processing</li>
+                    <li>Validation-ready form design</li>
+                    <li>JSON-based local storage</li>
+                </ul>
+                <div class="badge-grid">
+                    <span class="tech-badge">Full Stack</span>
+                    <span class="tech-badge">REST API</span>
+                    <span class="tech-badge">Node.js</span>
+                </div>
+                <a href="https://github.com/Siddhu-Srinivas/feedback-collector" class="view-code">View Code <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-emoji">🔒</div>
+                <h3>SecureGen</h3>
+                <p class="project-tech">Python • Cryptography • Tkinter</p>
+                <p class="project-desc">Robust password management solution with advanced cryptographic security standards.</p>
+                <ul class="project-features">
+                    <li>Cryptographic generation</li>
+                    <li>Real-time strength analysis</li>
+                    <li>Secure vault storage</li>
+                </ul>
+                <div class="badge-grid">
+                    <span class="tech-badge">Security</span>
+                    <span class="tech-badge">Cryptography</span>
+                    <span class="tech-badge">Python</span>
+                </div>
+                <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-3" class="view-code">View Code <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-emoji">🩺</div>
+                <h3>Advanced BMI</h3>
+                <p class="project-tech">Python • Data Analytics</p>
+                <p class="project-desc">A health monitoring system that provides personalized insights and meal planning.</p>
+                <ul class="project-features">
+                    <li>Multi-page analytics dashboard</li>
+                    <li>Smart meal algorithm</li>
+                    <li>Metric visualization</li>
+                </ul>
+                <div class="badge-grid">
+                    <span class="tech-badge">HealthTech</span>
+                    <span class="tech-badge">Algorithms</span>
+                </div>
+                <a href="https://github.com/Siddhu-Srinivas/OIBSIP_Python-Programming_task-2" class="view-code">View Code <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card">
+                <div class="project-emoji">🐾</div>
+                <h3>Pet Adopt</h3>
+                <p class="project-tech">HTML • CSS • Bootstrap</p>
+                <p class="project-desc">A modern pet adoption platform featuring intuitive card-based design and mobile-first approach.</p>
+                <ul class="project-features">
+                    <li>Intuitive card interface</li>
+                    <li>Mobile-first architecture</li>
+                    <li>Optimized user journeys</li>
+                </ul>
+                <div class="badge-grid">
+                    <span class="tech-badge">Responsive</span>
+                    <span class="tech-badge">Bootstrap</span>
+                </div>
+                <a href="https://github.com/Siddhu-Srinivas/My-Project-" class="view-code">View Code <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="nexus-footer" id="contact">
+        <h2 class="reveal" style="color: white;">Establish Link</h2>
+        <p class="reveal" style="color: var(--text-dim); margin-top: 1rem;">Feel free to reach out for collaborations or just a friendly hello</p>
+        
+        <div class="social-grid reveal">
+            <a href="https://github.com/Siddhu-Srinivas" class="social-node"><i class="fab fa-github"></i> GITHUB</a>
+            <a href="https://www.linkedin.com/in/gajula-siddhu-srinivas-611439322/" class="social-node"><i class="fab fa-linkedin"></i> LINKEDIN</a>
+            <a href="mailto:gajulasiddhusrinivas@gmail.com" class="social-node"><i class="fas fa-envelope"></i> EMAIL</a>
+            <a href="https://www.instagram.com/itz_me_siddhu_6351?igsh=MXY0cGJlNTJtOTZmYQ%3D%3D" class="social-node"><i class="fab fa-instagram"></i> INSTAGRAM</a>
+        </div>
+        
+        <p style="margin-top: 5rem; opacity: 0.3; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 2px;">
+            [CORE_v5.0] // © 2025 GAJULA SIDDHU SRINIVAS // ALL RIGHTS RESERVED
+        </p>
     </footer>
 
-    <!-- Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const toggleIcon = themeToggle.querySelector('i');
-        const toggleText = themeToggle.querySelector('.toggle-text');
-        
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            if (document.body.classList.contains('light-mode')) {
-                toggleIcon.className = 'fas fa-sun';
-                toggleText.textContent = 'Light Mode';
-            } else {
-                toggleIcon.className = 'fas fa-moon';
-                toggleText.textContent = 'Dark Mode';
+        // --- Neural Canvas Logic ---
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 80; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 0.5,
+                    speedX: Math.random() * 0.4 - 0.2,
+                    speedY: Math.random() * 0.4 - 0.2
+                });
             }
-        });
+        }
 
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, i) => {
+                p.x += p.speedX;
+                p.y += p.speedY;
 
-        // Active nav item
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-                navLinks.classList.remove('active'); // Close mobile menu when item is clicked
+                if (p.x > canvas.width) p.x = 0;
+                if (p.x < 0) p.x = canvas.width;
+                if (p.y > canvas.height) p.y = 0;
+                if (p.y < 0) p.y = canvas.height;
+
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.strokeStyle = `rgba(0, 243, 255, ${0.15 - dist/800})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
             });
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        animateCanvas();
+
+        // --- Typing Logic ---
+        const typedText = document.getElementById('typed-text');
+        const roles = ["Developer & AI Enthusiast", "B.Tech CSM Student", "Solution Architect", "Lifelong Learner"];
+        let roleIdx = 0;
+        let charIdx = 0;
+        let isDel = false;
+
+        function type() {
+            const current = roles[roleIdx];
+            typedText.textContent = isDel ? current.substring(0, charIdx - 1) : current.substring(0, charIdx + 1);
+            charIdx = isDel ? charIdx - 1 : charIdx + 1;
+
+            if (!isDel && charIdx === current.length) {
+                isDel = true;
+                setTimeout(type, 2000);
+            } else if (isDel && charIdx === 0) {
+                isDel = false;
+                roleIdx = (roleIdx + 1) % roles.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDel ? 50 : 100);
+            }
+        }
+        type();
+
+        // --- Theme Engine ---
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            themeBtn.textContent = document.body.classList.contains('light-mode') ? "MODE: LIGHT" : "MODE: DARK";
         });
 
-        // Hide mobile menu on scroll
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            const nav = document.querySelector('nav');
-            
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                nav.style.transform = 'translateY(-100%)';
-                navLinks.classList.remove('active');
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-            lastScroll = currentScroll;
-        });
+        // --- Scroll Reveal ---
+        function reveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
     </script>
 </body>
 </html>
