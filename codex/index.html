@@ -127,6 +127,16 @@
             text-shadow: var(--neon-glow);
         }
 
+        
+        .light-mode .nav-item {
+            color: #d6d6e0;
+        }
+
+        .light-mode .nav-item:hover {
+            color: var(--primary);
+            text-shadow: none;
+        }
+
         #theme-toggle {
             background: transparent;
             border: 1px solid var(--primary);
@@ -310,6 +320,107 @@
             color: var(--primary);
         }
 
+        /* --- Education Timeline --- */
+        .education-timeline {
+            display: grid;
+            gap: 1.25rem;
+            position: relative;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(0, 243, 255, 0.3);
+            border-radius: 50px;
+        }
+
+        .education-item {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-item:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 45px rgba(0, 243, 255, 0.3);
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -14px;
+            top: 20px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 2px solid var(--primary);
+        }
+
+        .education-item h4 {
+            margin-bottom: 0.35rem;
+            color: var(--primary);
+        }
+
+        .education-item span,
+        .education-item p {
+            display: block;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* --- Achievements Grid --- */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .achievement-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .achievement-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         /* --- Projects Grid --- */
         .projects-grid {
             display: grid;
@@ -474,7 +585,11 @@
         <div class="nav-links">
             <a href="#about" class="nav-item">About</a>
             <a href="#skills" class="nav-item">Skills</a>
+            <a href="#education" class="nav-item">Education</a>
+            <a href="#internship" class="nav-item">Internship</a>
+            <a href="#achievements" class="nav-item">Achievements</a>
             <a href="#projects" class="nav-item">Projects</a>
+            <a href="Resume.html" class="nav-item" target="_blank">Resume</a>
             <a href="#contact" class="nav-item">Connect</a>
             <button id="theme-toggle">MODE: DARK</button>
         </div>
@@ -521,8 +636,8 @@
                     <div style="padding-left: 10px;">
                         - <strong>B.Tech (CSM),II yr/II Sem:</strong> 8.45 SGPA<br>
                         - <strong>Intermediate (Hyd):</strong> 94.2%<br>
-                        - <strong>10th Grade (Surat):</strong> 75.8%<br>
-                        - <strong>sid.current_gpa:</strong> 8.58 CGPA (Overall);<br>
+                        - <strong>10th Grade (Surat):</strong> 75%<br>
+                        - <strong>sid.current_gpa:</strong> 8.55 CGPA (Overall);<br>
                         - <strong>sid.status:</strong> "Learning_Always";
                     </div>
                     <div style="color: var(--secondary); margin-top: 20px;">> _</div>
@@ -536,53 +651,147 @@
             <span class="section-tag">/02_CORE_STACK</span>
             <h2 class="section-title">Skills & Expertise</h2>
         </div>
+        
         <div class="skills-grid reveal">
             <div class="skill-card">
                 <span class="skill-icon">💻</span>
-                <h3>Web Development</h3>
+                <h3>Programming</h3>
                 <ul class="skill-list">
-                    <li>HTML5 & CSS3</li>
-                    <li>JavaScript (ES6+)</li>
-                    <li>Node.js & Express</li>
-                    <li>Responsive Design</li>
+                    <li>C Programming</li>
+                    <li>Python Programming</li>
+                    <li>Algorithm Implementation</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <span class="skill-icon">⚛️</span>
+                <h3>Modern Web Frameworks</h3>
+                <ul class="skill-list">
+                    <li>HTML / CSS / JS</li>
+                    <li>React & Angular</li>
+                    <li>User Experience Design</li>
+                    <li>Figma / UI·UX</li>
                 </ul>
             </div>
             <div class="skill-card">
                 <span class="skill-icon">🐍</span>
                 <h3>Python Development</h3>
                 <ul class="skill-list">
-                    <li>Data Structures & Algos</li>
-                    <li>OOP & GUI (Tkinter)</li>
-                    <li>Automation Scripts</li>
-                    <li>Library Management</li>
+                    <li>Data Structures</li>
+                    <li>GUI (Tkinter)</li>
+                    <li>Pandas & NumPy</li>
                 </ul>
             </div>
             <div class="skill-card">
-                <span class="skill-icon">🤖</span>
-                <h3>Machine Learning</h3>
+                <span class="skill-icon">🧠</span>
+                <h3>AI & Machine Learning</h3>
                 <ul class="skill-list">
-                    <li>Scikit-learn</li>
-                    <li>TensorFlow / Keras</li>
-                    <li>Data Preprocessing</li>
-                    <li>Feature Engineering</li>
+                    <li>Machine Learning</li>
+                    <li>Generative AI</li>
+                    <li>Agentic AI</li>
+                    <li>RAG Models</li>
+                    <li>Prompt Engineering</li>
                 </ul>
             </div>
             <div class="skill-card">
-                <span class="skill-icon">📊</span>
-                <h3>Advanced Excel</h3>
+                <span class="skill-icon">🗄️</span>
+                <h3>Databases</h3>
                 <ul class="skill-list">
-                    <li>VBA & Macros</li>
-                    <li>Pivot Tables</li>
-                    <li>Power Query</li>
-                    <li>Data Visualization</li>
+                    <li>SQL</li>
+                    <li>MongoDB</li>
+                    <li>Database Design</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-header reveal">
+            <span class="section-tag">/03_EDUCATION</span>
+            <h2 class="section-title">Education</h2>
+        </div>
+        <div class="education-timeline reveal">
+            <div class="education-item">
+                <h4>B.Tech in CSE (AI & Machine Learning)</h4>
+                <span>Vignana Bharathi Institute of Technology</span>
+                <p>2024 – Present</p>
+                <p>CGPA: 8.55</p>
+            </div>
+            <div class="education-item">
+                <h4>Intermediate (1st & 2nd Year)</h4>
+                <span>Narayana Junior College</span>
+                <p>2022 – 2024</p>
+                <p>94.2%</p>
+            </div>
+            <div class="education-item">
+                <h4>10th Grade (SSC)</h4>
+                <span>Shardhayathan Science High School</span>
+                <p>2021</p>
+                <p>75%</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="internship">
+        <div class="section-header reveal">
+            <span class="section-tag">/04_INTERNSHIP</span>
+            <h2 class="section-title">Internship Experience</h2>
+        </div>
+        <div class="education-timeline reveal">
+            <div class="education-item">
+                <h4>Python Programmer Intern</h4>
+                <span>Oasis Infobyte · AICTE OIB-SIP</span>
+                <p>Oct 05, 2025 – Nov 15, 2025 · 1 Month</p>
+                <p>Developed scalable Python applications and contributed to end-to-end project development during the AICTE-sanctioned internship program. Gained practical experience in scripting, automation, and software delivery workflows.</p>
+                <a href="https://oasis-intership-experience-blog.netlify.app/" class="view-code" target="_blank" rel="noopener noreferrer">Read Internship Blog <i class="fas fa-arrow-right"></i></a><br>
+                <a href="file:///C:\Users\OmSidhu\Downloads\My-Landing-Page\codex\Images\Gajula Siddhu Srinivas Certificate.pdf" class="view-code" target="_blank" rel="noopener noreferrer">View Certificate <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="education-item">
+                <h4>Avishkar 2K26 · Web Designing</h4>
+                <span>College Technology Club</span>
+                <p>Mar 12, 2026 – Present</p>
+                <p>Actively contributing as a club member in Avishkar 2K26, focusing on web design and development. Designed and developed responsive web pages, collaborated with team members on UI/UX improvements, and worked on real-time project implementations. Gained hands-on experience in front-end technologies, layout structuring, and modern design practices.</p>
+                <a href="https://avishkar2k25.ieeevbitsb.in/" class="view-code" target="_blank" rel="noopener noreferrer">Visit Club Website <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="section-header reveal">
+            <span class="section-tag">/05_ACHIEVEMENTS</span>
+            <h2 class="section-title">Achievements & Participation</h2>
+        </div>
+        <div class="achievements-grid reveal">
+            <div class="achievement-card">
+                <span class="achievement-icon">🏆</span>
+                <h4>1st Place — Data Vedhi Workshop</h4>
+                <p>Mastered Git & GitHub fundamentals and won the collaborative workshop challenge.</p>
+            </div>
+            <div class="achievement-card">
+                <span class="achievement-icon">🥉</span>
+                <h4>3rd Prize — CodeCraft (Coding Studio Club)</h4>
+                <p>Recognized for problem-solving excellence on HackerRank challenges.</p>
+            </div>
+            <div class="achievement-card">
+                <span class="achievement-icon">🤖</span>
+                <h4>GenAI Hackathon Participant</h4>
+                <p>Built an AI-powered TTS app with IBM Granite LLM and Suno Bark TTS, featuring tone rewriting and voice presets.</p>
+            </div>
+            <div class="achievement-card">
+                <span class="achievement-icon">🚀</span>
+                <h4>Smart India Hackathon (SIH) — Internal 24-Hour Hackathon</h4>
+                <p>Team-based competitive development of innovative solutions under time constraints.</p>
+            </div>
+            <div class="achievement-card">
+                <span class="achievement-icon">🔒</span>
+                <h4>Abhedya Ethical Hacking Workshop</h4>
+                <p>Gained hands-on experience in cybersecurity fundamentals and vulnerability analysis.</p>
             </div>
         </div>
     </section>
 
     <section id="projects">
         <div class="section-header reveal">
-            <span class="section-tag">/03_SELECTED_WORKS</span>
+            <span class="section-tag">/06_SELECTED_WORKS</span>
             <h2 class="section-title">Featured Projects</h2>
         </div>
         
@@ -698,6 +907,27 @@
                 </div>
                 <a href="https://github.com/Siddhu-Srinivas/My-Project-" class="view-code">View Code <i class="fas fa-arrow-right"></i></a>
             </div>
+
+            <!-- Project 7 -->
+            <div class="project-card">
+                <div class="project-emoji">🌾</div>
+                <h3>Crop Disease Diagnosis Assistant</h3>
+                <p class="project-tech">RAG Model • Pinecone DB • Groq LLM API • Python</p>
+                <p class="project-desc">An AI-powered agricultural assistant that diagnoses crop diseases using Retrieval-Augmented Generation and provides actionable solutions for farmers.</p>
+                <ul class="project-features">
+                    <li>Intelligent disease detection with contextual knowledge retrieval</li>
+                    <li>Organic & chemical treatment recommendations</li>
+                    <li>Real-time query response using Groq LLM</li>
+                    <li>Scalable vector search with Pinecone database</li>
+                </ul>
+                <div class="badge-grid">
+                    <span class="tech-badge">RAG Pipeline</span>
+                    <span class="tech-badge">Vector Database</span>
+                    <span class="tech-badge">LLM Integration</span>
+                    <span class="tech-badge">Farmer-Friendly UI</span>
+                </div>
+                <a href="#" class="view-code">View Code <i class="fas fa-arrow-right"></i></a>
+            </div>
         </div>
     </section>
 
@@ -706,6 +936,7 @@
         <p class="reveal" style="color: var(--text-dim); margin-top: 1rem;">Feel free to reach out for collaborations or just a friendly hello</p>
         
         <div class="social-grid reveal">
+            <a href="Resume.html" class="social-node" target="_blank"><i class="fas fa-file-pdf"></i> RESUME</a>
             <a href="https://github.com/Siddhu-Srinivas" class="social-node"><i class="fab fa-github"></i> GITHUB</a>
             <a href="https://www.linkedin.com/in/gajula-siddhu-srinivas-611439322/" class="social-node"><i class="fab fa-linkedin"></i> LINKEDIN</a>
             <a href="mailto:gajulasiddhusrinivas@gmail.com" class="social-node"><i class="fas fa-envelope"></i> EMAIL</a>

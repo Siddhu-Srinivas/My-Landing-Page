@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Siddhu Srinivas Gajula — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #d6d3cc;
+    padding: 2rem;
+    font-size: 13.5px;
+    color: #1a1a1a;
+    line-height: 1.5;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2.4rem 2.6rem;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.14);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #1b3a6b;
+    margin-bottom: 1rem;
+  }
+
+  .name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1b3a6b;
+    letter-spacing: 0.5px;
+    line-height: 1.15;
+  }
+
+  .tagline {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #4a6fa5;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  .contact-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 1.4rem;
+    margin-top: 0.55rem;
+  }
+
+  .contact-bar a,
+  .contact-bar span {
+    font-size: 12.5px;
+    color: #2c2c2c;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .contact-bar a:hover { color: #1b3a6b; text-decoration: underline; }
+
+  .dot-sep { color: #aaa; font-size: 10px; align-self: center; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 0.95rem; }
+
+  .section-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #1b3a6b;
+    padding-bottom: 0.25rem;
+    border-bottom: 1.5px solid #c8d6ec;
+    margin-bottom: 0.65rem;
+  }
+
+  /* Objective */
+  .objective-text {
+    font-size: 13px;
+    color: #2f2f2f;
+    line-height: 1.65;
+    text-align: justify;
+  }
+
+  /* Education */
+  .entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .entry-left { flex: 1; }
+
+  .entry-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #111;
+  }
+
+  .entry-sub {
+    font-size: 12.5px;
+    color: #555;
+    margin-top: 0.1rem;
+  }
+
+  .entry-right {
+    text-align: right;
+    flex-shrink: 0;
+    padding-left: 1rem;
+  }
+
+  .entry-date {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+  }
+
+  .entry-grade {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1b3a6b;
+    margin-top: 0.1rem;
+  }
+
+  /* Internship */
+  .intern-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .intern-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #111;
+  }
+
+  .intern-company {
+    font-size: 12.5px;
+    color: #4a6fa5;
+    font-weight: 500;
+    margin-top: 0.1rem;
+  }
+
+  .intern-date {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    text-align: right;
+  }
+
+  .bullet-list {
+    margin-top: 0.4rem;
+    padding-left: 1.1rem;
+  }
+
+  .bullet-list li {
+    font-size: 13px;
+    color: #2f2f2f;
+    margin-bottom: 0.25rem;
+    list-style: disc;
+    line-height: 1.55;
+  }
+
+  /* Projects */
+  .project-item {
+    margin-bottom: 0.55rem;
+  }
+
+  .project-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #111;
+    display: inline;
+  }
+
+  .project-sep {
+    color: #777;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0 0.3rem;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: #2f2f2f;
+    line-height: 1.55;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    row-gap: 0.3rem;
+    column-gap: 1rem;
+  }
+
+  .skill-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1b3a6b;
+    white-space: nowrap;
+  }
+
+  .skill-value {
+    font-size: 13px;
+    color: #2f2f2f;
+  }
+
+  /* Certifications */
+  .cert-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .cert-bullet {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #1b3a6b;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .cert-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+  }
+
+  .cert-issuer {
+    font-size: 12.5px;
+    color: #666;
+  }
+
+  /* Achievements */
+  .ach-item {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    align-items: flex-start;
+  }
+
+  .ach-marker {
+    color: #1b3a6b;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .ach-text {
+    font-size: 13px;
+    color: #2f2f2f;
+    line-height: 1.5;
+  }
+
+  .ach-text b { color: #111; font-weight: 600; }
+
+  /* Footer */
+  .resume-footer {
+    margin-top: 1.2rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+  }
+
+  .footer-langs {
+    font-size: 12px;
+    color: #555;
+  }
+
+  .footer-langs span {
+    font-weight: 600;
+    color: #1b3a6b;
+  }
+
+  hr.thin {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 0.4rem 0;
+  }
+
+  @media print {
+    body { background: white; padding: 0; font-size: 12px; }
+    .page { box-shadow: none; padding: 1.5rem 2rem; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="name">Siddhu Srinivas Gajula</div>
+    <div class="tagline">B.Tech CSE (Artificial Intelligence &amp; Machine Learning) &nbsp;|&nbsp; Fresher &amp; Intern</div>
+    <div class="contact-bar">
+      <a href="mailto:gajulasiddhu06@gmail.com">✉ gajulasiddhu06@gmail.com</a>
+      <span class="dot-sep">●</span>
+      <span>📞 +91 6355854371</span>
+      <span class="dot-sep">●</span>
+      <a href="https://www.linkedin.com/in/gajula-siddhu-srinivas-611439322" target="_blank">LinkedIn</a>
+      <span class="dot-sep">●</span>
+      <a href="https://github.com/Siddhu-Srinivas" target="_blank">GitHub</a>
+      <span class="dot-sep">●</span>
+      <span>Hyderabad, Telangana</span>
+    </div>
+  </div>
+
+  <!-- OBJECTIVE -->
+  <div class="section">
+    <div class="section-title">Objective</div>
+    <p class="objective-text">
+      Motivated and detail-oriented second-year B.Tech student specializing in Artificial Intelligence and Machine Learning, seeking an internship opportunity to apply my skills in machine learning, Python development, and full-stack web development. Eager to contribute meaningfully to innovative AI-driven projects within a forward-thinking organization while continuously growing as an engineer.
+    </p>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">B.Tech in Computer Science &amp; Engineering (AI &amp; Machine Learning)</div>
+        <div class="entry-sub">Vignana Bharathi Institute of Technology, Hyderabad</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">2024 – 2028 (Pursuing)</div>
+        <div class="entry-grade">CGPA: 8.55 / 10</div>
+      </div>
+    </div>
+
+    <hr class="thin"/>
+
+    <div class="entry" style="margin-top:0.5rem;">
+      <div class="entry-left">
+        <div class="entry-title">Intermediate — MPC (Mathematics, Physics, Chemistry)</div>
+        <div class="entry-sub">Narayana Junior College</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">2022 – 2024</div>
+        <div class="entry-grade">94.2%</div>
+      </div>
+    </div>
+
+    <hr class="thin"/>
+
+    <div class="entry" style="margin-top:0.5rem;">
+      <div class="entry-left">
+        <div class="entry-title">Secondary School Certificate (SSC) — 10th Grade</div>
+        <div class="entry-sub">Shardhayathan Science High School</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">2021</div>
+        <div class="entry-grade">75%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERNSHIP -->
+  <div class="section">
+    <div class="section-title">Internship Experience</div>
+    <div class="intern-header">
+      <div>
+        <div class="intern-title">Python Programmer Intern</div>
+        <div class="intern-company">Oasis Infobyte &nbsp;|&nbsp; AICTE OIB-SIP Program</div>
+      </div>
+      <div class="intern-date">Oct 05, 2025 – Nov 15, 2025 &nbsp;(1 Month)</div>
+    </div>
+    <ul class="bullet-list">
+      <li>Developed scalable Python applications as part of the AICTE-sanctioned OIB-SIP internship program.</li>
+      <li>Contributed to end-to-end software development cycles including design, coding, testing, and documentation.</li>
+      <li>Strengthened practical skills in Python scripting, automation, and structured problem-solving in a professional setting.</li>
+    </ul>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-label">Languages:</div>
+      <div class="skill-value">Python, C, SQL, JavaScript</div>
+
+      <div class="skill-label">AI / ML:</div>
+      <div class="skill-value">Machine Learning, Generative AI, Agentic AI, RAG Models, Prompt Engineering</div>
+
+      <div class="skill-label">Libraries:</div>
+      <div class="skill-value">Pandas, NumPy, IBM Watson SDK, SpeechRecognition, pyttsx3</div>
+
+      <div class="skill-label">Web Development:</div>
+      <div class="skill-value">HTML, CSS, JavaScript, React.js, Angular</div>
+
+      <div class="skill-label">Database:</div>
+      <div class="skill-value">SQL, MongoDB</div>
+
+      <div class="skill-label">Tools &amp; Design:</div>
+      <div class="skill-value">Git, GitHub, Figma (UI/UX), VS Code</div>
+
+      <div class="skill-label">Core CS:</div>
+      <div class="skill-value">Data Structures &amp; Algorithms, OOPs Concepts</div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="project-item">
+      <span class="project-name">Crop Disease Diagnosis Assistant</span>
+      <span class="project-sep">—</span>
+      <span class="project-desc">AI-powered agricultural chatbot using a Retrieval-Augmented Generation (RAG) model. Analyzes farmer inputs (images/text), retrieves relevant data, and provides organic &amp; chemical treatment recommendations in simple language.</span>
+    </div>
+
+    <div class="project-item">
+      <span class="project-name">Smart Attendance System</span>
+      <span class="project-sep">—</span>
+      <span class="project-desc">Attendance tracking system combining QR code scanning and facial recognition for enhanced accuracy, convenience, and automated record management.</span>
+    </div>
+
+    <div class="project-item">
+      <span class="project-name">Echo Verse</span>
+      <span class="project-sep">—</span>
+      <span class="project-desc">AI-powered audiobook creation tool using IBM Watson to convert text into modulated audio with various tones, voice styles, and audio playback controls.</span>
+    </div>
+
+    <div class="project-item">
+      <span class="project-name">Voice Assistant</span>
+      <span class="project-sep">—</span>
+      <span class="project-desc">Python-based voice assistant using speech recognition and text-to-speech (TTS) to understand and execute user commands with real-time voice responses.</span>
+    </div>
+
+    <div class="project-item">
+      <span class="project-name">Password Generator &amp; BMI Calculator</span>
+      <span class="project-sep">—</span>
+      <span class="project-desc">Secure customizable password generator and an interactive BMI health tracker — both featuring clean, user-friendly interfaces built with Python.</span>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem 2rem;">
+
+      <div class="cert-row">
+        <div class="cert-bullet"></div>
+        <div><span class="cert-name">Introduction to Generative AI</span> &nbsp;<span class="cert-issuer">— Google</span></div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-bullet"></div>
+        <div><span class="cert-name">Python Programming</span> &nbsp;<span class="cert-issuer">— HackerRank</span></div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-bullet"></div>
+        <div><span class="cert-name">React &amp; Angular</span> &nbsp;<span class="cert-issuer">— Infosys Springboard</span></div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-bullet"></div>
+        <div><span class="cert-name">C Programming</span> &nbsp;<span class="cert-issuer">— Cisco Networking Academy</span></div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-bullet"></div>
+        <div><span class="cert-name">MongoDB — Complete Developer Course</span> &nbsp;<span class="cert-issuer">— Udemy</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section">
+    <div class="section-title">Achievements &amp; Extracurriculars</div>
+
+    <div class="ach-item">
+      <div class="ach-marker">▸</div>
+      <div class="ach-text"><b>1st Place — Data Vedhi Workshop:</b> Won the workshop challenge after learning Git &amp; GitHub fundamentals and collaborating on version control projects.</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-marker">▸</div>
+      <div class="ach-text"><b>3rd Prize — CodeCraft (Coding Studio Club):</b> Recognized for problem-solving excellence by successfully solving HackerRank coding challenges.</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-marker">▸</div>
+      <div class="ach-text"><b>GenAI Hackathon Participant:</b> Built an AI-powered TTS application using IBM Granite LLM and Suno Bark TTS with tone rewriting, voice presets, and audio playback.</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-marker">▸</div>
+      <div class="ach-text"><b>Smart India Hackathon (SIH) — Internal Round:</b> Participated in a 24-hour team hackathon to design and deliver innovative solutions under time pressure.</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-marker">▸</div>
+      <div class="ach-text"><b>Abhedya Ethical Hacking Workshop:</b> Gained hands-on exposure to cybersecurity fundamentals, ethical hacking techniques, and system vulnerability analysis.</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-marker">▸</div>
+      <div class="ach-text"><b>Web Designer — AVISHKAR Club:</b> Active contributor to the college's technology and innovation club; responsible for designing club web content.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="resume-footer">
+    
+    <div class="footer-langs"><span>Languages Known:</span> &nbsp;Telugu &nbsp;|&nbsp; Hindi &nbsp;|&nbsp; English</div>
+  </div>
+
+</div>
+</body>
+</html>
